@@ -1,7 +1,7 @@
 class GitCreator
 
   def self.create_git(project, repo_identifier, is_default)
-    repo_path_base = Setting.plugin_redmine_create_git['repo_path']
+    repo_path_base = Setting.plugin_redmine_create_git['git_repo_path']
     repo_path_base += '/' unless repo_path_base[-1, 1]=='/'
 
     repo_url_base = Setting.plugin_redmine_create_git['repo_url']

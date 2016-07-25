@@ -18,7 +18,8 @@ Redmine::Plugin.register :redmine_create_git do
 
   settings :default => {
       :gitignore => '',
-      :repo_path => File.expand_path('../repos/git/', Rails.root),
+      :git_repo_path => File.expand_path('../repos/git/', Rails.root),
+      :svn_repo_path => File.expand_path('../repos/svn/', Rails.root),
       :repo_url => '',
       :branches => ''
 

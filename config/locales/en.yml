@@ -7,7 +7,8 @@ en:
     repo_path_not_writable: 'The path "%{path}" is not writable by the Rails user. You may want to use the "chown" command to fix that'
     repo_already_exists: 'There is already a repository in "%{path}"!'
   help:
-    field_repo_path: 'Path on the server, must be writable for the Rails user'
+    field_git_repo_path: 'Path on the server, must be writable for the Rails user'
+    field_svn_repo_path: 'Path on the server, must be writable for the Rails user'
     field_repo_url: 'URL to display if the Redmine Checkout plugin is installed. Example: https://redmine.domain.com/git/'
     field_branches: 'Branches to be created by default, other than master'
     field_gitignore: 'Default content for the .gitignore file'
@@ -15,5 +16,8 @@ en:
     gitignore: '[Optional] Gitignore'
     branches: '[Optional] Branches'
     repo_url: '[Optional] Repository URL'
+    path_to_git_repository: 'Basepath to git repositories'
+    path_to_svn_repository: 'Basepath to svn repositories'
   buttons:
-    quick_create: 'Quick create [Create Git plugin]'
+    quick_create_git: 'Quick create git repository'
+    quick_create_svn: 'Quick create svn repository'

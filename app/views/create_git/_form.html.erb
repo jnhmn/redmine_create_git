@@ -18,7 +18,7 @@
 
   <p>
     <%= label_tag('repository_scm', l(:field_path_to_repository)) %>
-    <%= text_field_tag :path_to_repository, '', :disabled => true, :size => 50 %>
+    <%= text_field_tag :path_to_git_repository, '', :disabled => true, :size => 50 %>
   </p>
 
   <p>
@@ -29,12 +29,12 @@
 <script type="text/javascript">
     var path = '<%= @repo_path_base %>';
     var existing = <%= raw @project.repositories.where('type=?','Repository::Git').collect{|r| r.identifier} %>;
-    $('#path_to_repository').val(path);
+    $('#path_to_git_repository').val(path);
     $('#repo_identifier').on('input', function (target) {
         if ($(this).val().length > 0) {
-            $('#path_to_repository').val(path + '.' + $(this).val());
+            $('#path_to_git_repository').val(path + '.' + $(this).val());
         } else {
-            $('#path_to_repository').val(path);
+            $('#path_to_git_repository').val(path);
         }
 
         if ($.inArray($(this).val(), existing) >= 0) {

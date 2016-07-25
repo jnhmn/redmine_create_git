@@ -5,9 +5,14 @@
    end
 %>
 <p>
-  <label><%= l(:field_path_to_repository) %></label>
-  <%= text_field_tag 'settings[repo_path]', @settings[:repo_path] %>
-  <em class="info"> <%= l('help.field_repo_path') %></em>
+  <label><%= l('labels.path_to_git_repository') %></label>
+  <%= text_field_tag 'settings[git_repo_path]', @settings[:git_repo_path] %>
+  <em class="info"> <%= l('help.field_git_repo_path') %></em>
+</p>
+<p>
+  <label><%= l('labels.path_to_svn_repository') %></label>
+  <%= text_field_tag 'settings[svn_repo_path]', @settings[:svn_repo_path] %>
+  <em class="info"> <%= l('help.field_svn_repo_path') %></em>
 </p>
 <p>
   <label><%= l('labels.gitignore') %></label>

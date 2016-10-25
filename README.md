@@ -75,17 +75,19 @@ The git section in Apache's VirtualHost for Redmine should be as following:
 
 ## Known Issues
 
-* Only compatible with Linux *(Tested on Debian/Ubuntu)*
+* Only compatible with Linux *(Tested on Debian/Ubuntu/CentOS)*
 * No validation tests on the plugin configuration page input!
 
 ## Downloading and installing the plugin
 
 First download the plugin using git, open a terminal in your Redmine installation directory:
 
-<tt>git clone https://github.com/martin-denizet/redmine_create_git.git ./plugins/</tt>
+<tt>git clone https://github.com/jnhmn/redmine_create_git.git ./plugins/</tt>
 
 The plugin uses the content_for in controllers gem. It's required to run a bundle install command:
 <tt>bundle install</tt>
+
+The git configuration fields user.name and user.email must be set globally for the corresponding user.
 
 The installation is now finished and you will be able to use the plugin after you restart your Redmine instance.
 
@@ -110,6 +112,8 @@ You can also configure the URL to integrate with Redmine Checkout Plugin. Tested
 Uses Clément Alexandre's content_for_in_controllers gem: https://github.com/clm-a/content_for_in_controllers
 
 ## License
+
+Copyright (C) 2016 Jan Hohmann <github@jnhmn.de>
 
 Copyright (C) 2014, 2015 Martin Denizet <martin.denizet@supinfo.com>
 

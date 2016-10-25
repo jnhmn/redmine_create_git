@@ -7,9 +7,9 @@ end
 
 
 Redmine::Plugin.register :redmine_create_git do
-  name 'Redmine Create Git plugin'
-  author 'Martin DENIZET'
-  url 'https://github.com/martin-denizet/redmine_create_git'
+  name 'Redmine Create Git and SVN plugin'
+  author 'Jan Hohmann, Martin DENIZET'
+  url 'https://github.com/jnhmn/redmine_create_git'
   author_url 'http://martin-denizet.com'
   description 'Ease the creation of Git repositories when using Git Smart HTTP'
   version '0.2.0'

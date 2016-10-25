@@ -17,8 +17,8 @@ module CreateGit
 
         content_for :header_tags, "<script type='text/javascript'>
 $( document ).ready(function() {
-    $('#tab-content-repositories p').append( '#{view_context.link_to(I18n.t('buttons.quick_create_git'),{controller:'create_git', action:'new',project_id:@project.identifier},{class:'icon icon-add'})}' );
-    $('#tab-content-repositories p').append( '#{view_context.link_to(I18n.t('buttons.quick_create_svn'),{controller:'create_svn', action:'new',project_id:@project.identifier},{class:'icon icon-add'})}' );
+    $('#tab-content-repositories p').append( '#{view_context.link_to(I18n.t('buttons.quick_create_git'),{controller:'create_git', action:'new',project_id:@project.identifier},{class: 'icon icon-add'})}' );
+    $('#tab-content-repositories p').append( '#{view_context.link_to(I18n.t('buttons.quick_create_svn'),{controller:'create_svn', action:'new',project_id:@project.identifier},{class: 'icon icon-add'})}' );
 });
 </script>".html_safe
 

@@ -78,6 +78,8 @@ class SvnCreator
       #Delete the temporary clone
       system("rm -Rf  #{temporary_clone}")
 
+      # Give owner group write privileges to let dav server alter the files
+      system("chmod -R g+w #{repo_fullpath}")
       Rails.logger.info 'Creation finished'
     end
     return true

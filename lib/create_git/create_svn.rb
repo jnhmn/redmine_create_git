@@ -65,16 +65,12 @@ class SvnCreator
       system("mkdir #{repo_fullpath}")
       system("cd #{repo_fullpath} && svnadmin create .")
       system("svn checkout file://#{repo_fullpath} #{temporary_clone}");
+      system("mkdir #{temporary_clone}/trunk");
+      system("mkdir #{temporary_clone}/branches");
+      system("mkdir #{temporary_clone}/tags");
+      system("cd #{temporary_clone} && svn add trunk branches tags && svn ci -m 'First Commit'");
 
-      #File.open("#{temporary_clone}/.gitignore", 'w') { |f| f.write(Setting.plugin_redmine_create_git['gitignore']) }
-      #Make first commit
-      #TODO: Make message configurable
-      #system("cd #{temporary_clone} && git add .gitignore && git commit -m 'First Commit' && git push origin master");
-      #Create branches
-      #Setting.plugin_redmine_create_git['branches'].gsub(/\r/, '').split(/\n/).each do |branch|
-      #  Rails.logger.info "Adding branch #{branch}"
-      #  system("cd #{temporary_clone} && git checkout -b #{branch} && git push origin #{branch}");
-      #end
+
       #Delete the temporary clone
       system("rm -Rf  #{temporary_clone}")
 

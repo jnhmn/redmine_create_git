@@ -19,7 +19,7 @@ class SvnCreator
 
     Rails.logger.info "Creating repo in #{new_repo_path} for project #{project.name}"
 
-    if project and create_repo(new_repo_path)
+    if project and create_repo(new_repo_path, project)
       repo = Repository.factory('Subversion')
       repo.project = project
       repo.url = "file://"+repo_path_base+new_repo_name
@@ -53,7 +53,7 @@ class SvnCreator
 
   end
 
-  def self.create_repo(repo_fullpath)
+  def self.create_repo(repo_fullpath, project)
     if File.exist?(repo_fullpath)
       Rails.logger.error "Repository in '#{repo_fullpath}' already exists!"
       raise I18n.t('errors.repo_already_exists', {:path => repo_fullpath})
@@ -70,6 +70,11 @@ class SvnCreator
       system("mkdir #{temporary_clone}/tags");
       system("cd #{temporary_clone} && svn add trunk branches tags && svn ci -m 'First Commit'");
 
+       # Create post-commit hook to inform redmine about changes
+      File.open("#{repo_fullpath}/hooks/post-commit", 'w') { |f|
+        f << "#!/bin/sh\n"
+        f << "curl https://#{Setting.host_name}/sys/fetch_changesets?key=#{Setting.sys_api_key}&id=#{project.identifier}"
+      }
 
       #Delete the temporary clone
       system("rm -Rf  #{temporary_clone}")

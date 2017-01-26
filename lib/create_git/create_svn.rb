@@ -75,6 +75,7 @@ class SvnCreator
         f << "#!/bin/sh\n"
         f << "curl \"https://#{Setting.host_name}/sys/fetch_changesets?key=#{Setting.sys_api_key}&id=#{project.identifier}\""
       }
+      system("chmod +x #{repo_fullpath}/hooks/post-commit")
 
       #Delete the temporary clone
       system("rm -Rf  #{temporary_clone}")

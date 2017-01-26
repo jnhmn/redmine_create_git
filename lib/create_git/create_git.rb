@@ -79,7 +79,7 @@ class GitCreator
       # Create post-commit hook to inform redmine about changes
       File.open("#{repo_fullpath}/hooks/post-receive", 'w') { |f|
         f << "#!/bin/sh\n"
-        f << "curl https://#{Setting.host_name}/sys/fetch_changesets?key=#{Setting.sys_api_key}&id=#{project.identifier}"
+        f << "curl \"https://#{Setting.host_name}/sys/fetch_changesets?key=#{Setting.sys_api_key}&id=#{project.identifier}\""
       }
 
       #Delete the temporary clone

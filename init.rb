@@ -21,7 +21,9 @@ Redmine::Plugin.register :redmine_create_git do
       :git_repo_path => File.expand_path('../repos/git/', Rails.root),
       :svn_repo_path => File.expand_path('../repos/svn/', Rails.root),
       :repo_url => '',
-      :branches => ''
+      :branches => '',
+      :enable_commit_hook => 0,
+      :commit_hook_ssl => 1
 
   }, :partial => 'settings/create_git'
 

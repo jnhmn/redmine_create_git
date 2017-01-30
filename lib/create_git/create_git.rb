@@ -77,11 +77,18 @@ class GitCreator
       end
 
       # Create post-commit hook to inform redmine about changes
-      File.open("#{repo_fullpath}/hooks/post-receive", 'w') { |f|
-        f << "#!/bin/sh\n"
-        f << "curl \"https://#{Setting.host_name}/sys/fetch_changesets?key=#{Setting.sys_api_key}&id=#{project.identifier}\""
-      }
-      system("chmod +x #{repo_fullpath}/hooks/post-receive")
+      if Setting.plugin_redmine_create_git['enable_commit_hook']
+        Rails.logger.info "Create post-receive hook"
+	http_prefix = "http"
+	if Setting.plugin_redmine_create_git['commit_hook_ssl']
+	  http_prefix = "https"
+	end
+        File.open("#{repo_fullpath}/hooks/post-receive", 'w') { |f|
+          f << "#!/bin/sh\n"
+          f << "curl \"#{http_prefix}://#{Setting.host_name}/sys/fetch_changesets?key=#{Setting.sys_api_key}&id=#{project.identifier}\""
+        }
+        system("chmod +x #{repo_fullpath}/hooks/post-receive")
+      end
 
       #Delete the temporary clone
       system("rm -Rf  #{temporary_clone}")

@@ -29,3 +29,13 @@
   <%= text_field_tag 'settings[repo_url]', repo_url %>
   <em class="info"> <%= l('help.field_repo_url') %></em>
 </p>
+<p>
+  <label><%= l('labels.enable_commit_hook') %></label>
+  <%= check_box_tag 'settings[enable_commit_hook]', "1", @settings[:enable_commit_hook] %>
+  <em class="info"> <%= l('help.field_enable_commit_hook') %></em>
+</p>
+<p>
+  <label><%= l('labels.commit_hook_ssl') %></label>
+  <%= check_box_tag 'settings[commit_hook_ssl]', "1",  @settings[:commit_hook_ssl] %>
+  <em class="info"> <%= l('help.field_commit_hook_ssl') %></em>
+</p>
